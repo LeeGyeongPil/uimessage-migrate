@@ -1,0 +1,37 @@
+{
+  "name": "uimessage-migrate",
+  "version": "0.1.0",
+  "description": "Migrate stored Vercel AI SDK chat history (v4 messages, v5/v6 parts) to current UIMessage parts, validate with your installed ai, and report every loss.",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/LeeGyeongPil/uimessage-migrate.git" },
+  "homepage": "https://github.com/LeeGyeongPil/uimessage-migrate#readme",
+  "bugs": "https://github.com/LeeGyeongPil/uimessage-migrate/issues",
+  "type": "module",
+  "keywords": ["ai-sdk", "vercel-ai", "uimessage", "migration", "chat-history", "useChat"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./check": { "types": "./dist/check.d.ts", "default": "./dist/check.js" },
+    "./package.json": "./package.json"
+  },
+  "bin": { "uimessage-migrate": "bin/uimessage-migrate.mjs" },
+  "files": ["dist", "bin", "README.md", "README.ko.md", "LICENSE", "CHANGELOG.md"],
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && vitest run",
+    "start": "npm run build && node bin/uimessage-migrate.mjs examples/v4-dump.jsonl --dry-run --lang en"
+  },
+  "peerDependencies": { "ai": ">=5 <8" },
+  "peerDependenciesMeta": { "ai": { "optional": true } },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "ai": "7.0.172",
+    "ai-v5": "npm:ai@5.0.289",
+    "ai-v6": "npm:ai@6.0.331",
+    "typescript": "7.0.2",
+    "vitest": "5.1.0",
+    "zod": "3.25.76"
+  }
+}
