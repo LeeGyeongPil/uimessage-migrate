@@ -1,0 +1,5 @@
+[
+  {"id":"a1","role":"assistant","parts":[
+    {"type":"tool-weather","toolCallId":"call_1","state":"output-error","rawInput":{"city":"Seoul"},"errorText":"upstream timeout"}
+  ]}
+]

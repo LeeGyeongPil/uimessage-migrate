@@ -1,0 +1,9 @@
+[
+  {"id":"u1","role":"user","parts":[{"type":"text","text":"Weather in Seoul?"}]},
+  {"id":"a1","role":"assistant","metadata":{"model":"example-model"},"parts":[
+    {"type":"step-start"},
+    {"type":"reasoning","text":"Call the tool.","providerMetadata":{"anthropic":{"signature":"sig-example"}}},
+    {"type":"tool-weather","toolCallId":"call_1","state":"output-available","input":{"city":"Seoul"},"output":{"temp":21}},
+    {"type":"text","text":"It is sunny."}
+  ]}
+]

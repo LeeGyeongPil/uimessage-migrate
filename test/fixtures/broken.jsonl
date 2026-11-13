@@ -1,0 +1,4 @@
+{"id":"ok1","role":"user","content":"hello"}
+{"id":"bad", "role": "user", "content": 
+{"id":"norole","content":"no role here"}
+{"id":"ok2","role":"assistant","content":"hi there"}

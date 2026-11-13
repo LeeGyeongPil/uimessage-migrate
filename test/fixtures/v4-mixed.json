@@ -1,0 +1,15 @@
+[
+  {"id":"u1","role":"user","content":"What is the weather in Seoul? See attached.","createdAt":"2025-03-01T10:00:00.000Z",
+   "experimental_attachments":[{"name":"map.png","contentType":"image/png","url":"https://example.com/map.png"},{"url":"https://example.com/blob"}]},
+  {"id":"a1","role":"assistant","content":"It is sunny.","reasoning":"User asked weather; call tool.",
+   "toolInvocations":[{"state":"result","step":0,"toolCallId":"call_1","toolName":"weather","args":{"city":"Seoul"},"result":{"temp":21}}],
+   "annotations":[{"model":"gpt-4o"}]},
+  {"id":"a2","role":"assistant","content":"Searching...",
+   "parts":[{"type":"step-start"},
+            {"type":"reasoning","reasoning":"think","details":[{"type":"text","text":"think","signature":"sig123"},{"type":"redacted","data":"xxx"}]},
+            {"type":"tool-invocation","toolInvocation":{"state":"call","step":1,"toolCallId":"call_2","toolName":"search","args":{"q":"seoul"}}},
+            {"type":"source","source":{"sourceType":"url","id":"s1","url":"https://example.com/a","title":"A"}},
+            {"type":"file","mimeType":"text/plain","data":"aGVsbG8="},
+            {"type":"text","text":"Searching..."}]},
+  {"id":"d1","role":"data","content":"","data":{"progress":1}}
+]
