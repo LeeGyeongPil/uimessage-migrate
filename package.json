@@ -1,6 +1,6 @@
 {
   "name": "uimessage-migrate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Migrate stored Vercel AI SDK chat history (v4 messages, v5/v6 parts) to current UIMessage parts, validate with your installed ai, and report every loss.",
   "license": "MIT",
   "repository": {

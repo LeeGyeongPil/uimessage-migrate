@@ -48,7 +48,7 @@ npx uimessage-migrate examples/v4-dump.jsonl --dry-run --lang en
 ```
 
 ```text
-uimessage-migrate 0.1.0
+uimessage-migrate 0.1.1
 validator: ai@7.0.172 (project)
 migrated 5/5 records (passthrough 1, failed 0, dropped messages 0)
 losses: 8 (lost 3, estimated 1, moved 4)
@@ -153,7 +153,7 @@ npx uimessage-migrate dump.jsonl --out migrated.jsonl
 ```
 
 ```text
-uimessage-migrate 0.1.0
+uimessage-migrate 0.1.1
 validator: ai@7.0.172 (project)
 migrated 2/2 records (passthrough 0, failed 0, dropped messages 0)
 losses: 0 (lost 0, estimated 0, moved 0)

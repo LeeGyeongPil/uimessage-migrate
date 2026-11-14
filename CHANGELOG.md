@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-11-14
+
+### Security
+- Dev dependency security updates: `zod` 4.6.7 and an `undici` 6.29.1 override (probe `ai` versions only; no runtime dependencies).
+
 ## [0.1.0] - 2026-11-14
 
 ### Added
@@ -16,9 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `uimessage-migrate` CLI for JSON and JSONL dumps (streaming) with `--out`, `--failed`, `--report`, `--dry-run`,
   `--no-validate`, `--fail-on`, `--incomplete-tool`, `--data-role`, `--signature-provider`, `--messages-key`, `--lang`.
 - English and Korean CLI output (`--lang en|ko`, `UIMESSAGE_MIGRATE_LANG`, `LC_ALL`, `LC_MESSAGES`, `LANG`).
-
-### Security
-- Dev dependency security updates: `zod` 4.6.7 and an `undici` 6.29.1 override (probe `ai` versions only; no runtime dependencies).
 
 ### Known issues
 - The output-path guard does not detect hard links between the input and `--out`/`--failed`/`--report` files.
