@@ -170,7 +170,7 @@ sqlite3 -json chat.db "select id, role, content, tool_invocations as toolInvocat
 
 For other databases use the equivalent of `row_to_json` (PostgreSQL) or `JSON_OBJECT` (MySQL) in your own export query, and keep the original column names (`toolInvocations` or `tool_invocations` must be renamed to `toolInvocations` in the exported object). If a conversation is one row with a `messages` JSON column, export it as `{"messages": [...]}` per line. Keep your original table until you have compared the report and tested with real chats.
 
-The validator line says `(project)` because `ai` is installed in the folder you ran the command from (`npm install ai`). `ai` is not installed together with this package: without it the command stops with exit code 3 and tells you to run `npm install ai` or add `--no-validate`. `(bundled)` appears only when the package can find an `ai` next to itself, for example when you run it from a clone of this repository.
+The validator line says `(project)` because `ai` is installed in the folder you ran the command from (`npm install ai`). `ai` is not installed together with this package: without it the command stops with exit code 3 and tells you to run `npm install ai` or add `--no-validate`. `(bundled)` appears only when no `ai` is found from the current folder but one exists next to the package, for example when you run a clone's `bin` from another directory. Running inside the clone shows `(project)`.
 
 ## What gets converted
 
@@ -366,7 +366,7 @@ flowchart LR
 | Exit code 2, "Nothing to write" | No `--out`, `--failed` or `--report` and no `--dry-run` | Add one of them, or `--dry-run` |
 | Exit code 2, "Could not parse ... as JSON" | A `.json` file that is really JSONL | Rename it to `.jsonl` |
 | Exit code 1 and rows in `failed.jsonl` | Invalid JSON, missing `role`, or validation failed | Open the file; `line` is the original line number |
-| `validator: ai@... (bundled)` | You ran it from a clone of this repository, which has its own `ai` | Run inside your project (with `npm install ai`) to validate with your own version |
+| `validator: ai@... (bundled)` | No `ai` was found from the current folder, but the clone of this repository next to the package has its own `ai` (for example you ran the clone's `bin` from another directory) | Run inside your project (with `npm install ai`) to validate with your own version |
 | Messages migrate but the model call still fails | A tool call without a result (`unpaired tool calls` above 0) | Use `--incomplete-tool error` |
 | Columns come out as strings, not objects | The export wrote JSON columns as text | Parse them in the export, for example `jq '.toolInvocations |= fromjson'` |
 

@@ -170,7 +170,7 @@ sqlite3 -json chat.db "select id, role, content, tool_invocations as toolInvocat
 
 다른 데이터베이스는 직접 만드는 내보내기 쿼리에서 `row_to_json`(PostgreSQL)이나 `JSON_OBJECT`(MySQL)에 해당하는 기능을 쓰고, 원래 속성 이름을 유지하세요(`tool_invocations` 는 내보낸 객체에서 `toolInvocations` 로 바꿔야 합니다). 대화 하나가 `messages` JSON 열을 가진 한 행이면 한 줄에 `{"messages": [...]}` 로 내보내세요. 보고서를 비교하고 실제 대화로 시험하기 전까지 원래 테이블은 그대로 두세요.
 
-검증기 줄이 `(project)` 인 것은 명령을 실행한 폴더에 `ai` 가 설치되어 있기 때문입니다(`npm install ai`). `ai` 는 이 패키지와 함께 설치되지 않습니다. 없으면 종료 코드 3 으로 멈추고 `npm install ai` 를 하거나 `--no-validate` 를 붙이라고 안내합니다. `(bundled)` 는 패키지 옆에서 `ai` 를 찾을 수 있을 때만 나옵니다(예: 이 레포를 clone 해서 실행할 때).
+검증기 줄이 `(project)` 인 것은 명령을 실행한 폴더에 `ai` 가 설치되어 있기 때문입니다(`npm install ai`). `ai` 는 이 패키지와 함께 설치되지 않습니다. 없으면 종료 코드 3 으로 멈추고 `npm install ai` 를 하거나 `--no-validate` 를 붙이라고 안내합니다. `(bundled)` 는 현재 폴더에서 `ai` 를 찾지 못했지만 패키지 옆에 `ai` 가 있을 때만 나옵니다(예: clone 한 레포의 `bin` 을 다른 폴더에서 실행할 때). clone 안에서 실행하면 `(project)` 로 나옵니다.
 
 ## 무엇이 어떻게 바뀌나
 
@@ -366,7 +366,7 @@ flowchart LR
 | 종료 코드 2, "Nothing to write" | `--out`, `--failed`, `--report` 도 `--dry-run` 도 없음 | 하나를 추가하거나 `--dry-run` |
 | 종료 코드 2, "Could not parse ... as JSON" | 실제로는 JSONL 인 `.json` 파일 | `.jsonl` 로 이름 변경 |
 | 종료 코드 1 과 `failed.jsonl` 의 행 | 잘못된 JSON, `role` 없음, 또는 검증 실패 | 파일을 열어 보세요. `line` 이 원래 줄 번호입니다 |
-| `validator: ai@... (bundled)` | 이 레포를 clone 해서 실행함(레포 자체의 `ai` 사용) | 내 버전으로 검증하려면 프로젝트 안에서(`npm install ai` 후) 실행 |
+| `validator: ai@... (bundled)` | 현재 폴더에서 `ai` 를 찾지 못했고 패키지 옆(clone 한 레포)의 `ai` 를 사용함(예: clone 의 `bin` 을 다른 폴더에서 실행) | 내 버전으로 검증하려면 프로젝트 안에서(`npm install ai` 후) 실행 |
 | 변환은 됐는데 모델 호출이 여전히 실패 | 결과 없는 도구 호출(위의 `unpaired tool calls` 가 0 보다 큼) | `--incomplete-tool error` 사용 |
 | 열이 객체가 아니라 문자열로 나옴 | 내보내기에서 JSON 열을 텍스트로 씀 | 내보낼 때 파싱. 예: `jq '.toolInvocations |= fromjson'` |
 
